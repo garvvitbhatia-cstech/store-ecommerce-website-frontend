@@ -1,0 +1,375 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--inner page banner start here-->
+        <div class="inner-page-banner">
+            <img src="assets/new/img/simple-modern.jpg">
+            <div class="pageheading-overlay">
+                <h2 class="text-center text-white">Shop Detail</h2>
+                <span class="breadcrumb" style="color:#fff">{{breadcrumb}}</span>
+            </div>
+        </div>
+        <!--inner page banner end here-->
+        <div class="container">
+            <!--Product details start here-->
+            <div class="row">
+                <!--left product img start-->
+                <div class="col-lg-6 col-md-12">
+                    <div id='lens'></div>
+                    <div id='slideshow-items-container'>
+                        <img *ngFor="let p_image of productData.product_images; let i = index;" [ngClass]="{'active': i === 0}" [id]="'p_'+i" alt="{{p_image.alt_tag}}" title="{{p_image.title_tag}}"  class='slideshow-items all_p_images' src='{{p_image.image}}'>
+                    </div>
+                    <div id='result'></div>
+                    <div class='col-12 d-flex'>
+                        <img *ngFor="let p_thumbnail of productData.product_images; let i = index;" [ngClass]="{'active': i === 0}" (click)="setProductImage(i)" class='slideshow-thumbnails' alt="{{p_thumbnail.alt_tag}}" title="{{p_thumbnail.title_tag}}" src='{{p_thumbnail.image}}'>
+                    </div>
+                </div>
+                <!--left product img end-->
+
+                <!--Right Product items start-->
+                <div class="col-lg-6 col-md-12">
+
+                    <!--Our Product slider section start-->
+                        <div class="product-details mt-4">
+                            <div class="d-flex pb-3 align-items-center">
+                                <a (click)="gotoBrandPage(productData.brand_data?.slug)" class="project-cat-link me-3">{{productData.brand_data?.title}} Store</a>
+
+                                <a style="cursor:pointer" *ngIf="is_wishlist == 0" (click)="addToWishList('A',productData.id)" class="view-more"><i class="fa-regular fa-heart me-2"></i> Add to Wishlist</a>
+
+                                <a style="cursor:pointer" *ngIf="is_wishlist > 0" (click)="addToWishList('R',productData.id)" class="view-more"><i class="fa-solid fa-heart me-2"></i> Remove from Wishlist</a>
+                            </div>
+
+                            <h2 class="product_heading">{{productData.brand_data.title}} {{productData.product_name}} {{productData.model_no}}</h2>     
+                            <!-- <div class="d-flex align-items-center mt-3">
+                                <div class="star-rating">
+                                    <span class="star">{{productData.rating}} 
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>                                            
+                                </div>
+                                <div class="ms-2">
+                                    <p class="review">{{productData.no_of_rating}} Reviews</p>
+                                </div>
+                            </div>  -->
+
+                            <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                <div class="main-price fs-4">
+                                    <del>₹{{productData.price}}</del>
+                                </div>
+                                <div class="ms-2 offer-price">
+                                    <h4 class="fw-bold fs-3">₹{{productData.list_price}}</h4>
+                                </div>
+                                <div *ngIf="productData.discount_percentage > 0" class="offer ms-2 fs-4">{{productData.discount_percentage}}% OFF</div>
+                                
+                            </div>   
+
+                            <div *ngIf="productData.product_features.length > 0" class="product-quick-info">
+                                <ul>
+                                    <li *ngFor="let p_feature of productData.product_features;">{{p_feature}}</li>
+                                </ul>
+                            </div>
+                            <div *ngIf="productData.is_stock == 2 || productData.quantity == 0" class="d-flex align-items-center justify-content-md-start justify-content-center mt-4 p-2 p-md-3 rounded text-bg-light add-to-cart-section-m">
+                                <span style="color: #f00; font-weight: bold; font-size: 20px;">Out of Stock</span>
+                                
+                            </div>
+                            <div *ngIf="productData.is_stock == 1 && productData.quantity > 0" class="d-flex align-items-center justify-content-md-start justify-content-center mt-4 p-2 p-md-3 rounded text-bg-light add-to-cart-section-m">
+                                <div class="qty-input me-2 me-md-3 ">
+                                    <button (click)="updateQty('Minus')" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                    <input class="product-qty" type="number" name="product-qty" min="0" max="12" value="1" id="qty_box">
+                                    <button (click)="updateQty('Plus')" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                </div>
+                               
+                                <a (click)="addToCart(productData.id);" id="addTocartBtn" style="cursor:pointer" class="btn btn-primary me-1 me-md-3"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
+
+                                <a (click)="buyNow(productData.id);" id="addTocartBtn" style="cursor:pointer" class="btn btn-success me-1 me-md-3"><i class="fa fa-credit-card mr-1" style="color:#fff"></i> Buy Now</a>
+                                
+                            </div>
+
+                            <div class="d-flex align-items-center mt-3">
+                                <span class="shareiton me-2">Share On:</span>
+                                <div class="share-icons">
+                                    <a href="#" class="me-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#" class="me-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#" class="me-2"><i class="fa-brands fa-x-twitter"></i></a>
+                                    <a href="#" class="me-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                                </div>
+                            </div>  
+
+                            <div class="row mt-3 mt-lg-4">
+                                <div class="col-lg-6 col-md-12">
+                                    <h5 class="fw-bold">Specifications:</h5>
+                                    <div class="product-quick-info">
+                                        <ul>
+                                            <li *ngIf="productData.capacity">Capacity: {{productData.capacity}}</li>
+                                            <li *ngIf="productData.model_no">Model No: {{productData.model_no}}</li>
+                                            <li *ngIf="productData.color">Color: {{productData.color}}</li>
+                                            <li *ngIf="productData.material">Material: {{productData.material}}</li>
+                                            <li *ngIf="productData.type">Type: {{productData.type}}</li>
+                                            <li *ngIf="productData.pack_of">Pack Of: {{productData.pack_of}}</li>
+                                            <li *ngIf="productData.warranty">Warranty: {{productData.warranty}}</li>
+                                            <li *ngIf="productData.packing_sizing">Packing & Sizing: {{productData.packing_sizing}}</li>
+                                            <li *ngIf="productData.product_care">Product Care: {{productData.product_care}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <h5 class="fw-bold">Services:</h5>
+                                    <div class="product-quick-info">
+                                        <ul>
+                                            <li>Online Payment</li>
+                                            <li>Cash On Delivery Available</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                             
+                                    
+                        </div>
+                    <!--Our Product slider section end -->
+                </div>
+                <!--Right Product item end-->
+            </div>
+
+            <div class="border mt-3 mb-3 mt-md-4 mb-md-1"></div>
+            <div class="row product-description">
+                <div class="col-md-12 mt-4">
+                    <h3 class="fw-bold">Product Description</h3>
+
+                    <div [innerHTML]="productData.description"></div>
+
+                    <!-- <div class="row mt-3">
+                        <div class="col-md-12 my-3">
+                            <img src="assets/new/img/product-detials/01.jpg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/02.jpg"></div>
+                                <div class="details-des">
+                                    <h5>450 Watts Powerful Motor</h5>
+                                    <p>This juicer mixer grinder comes with a powerful motor of 450 watts that gives an exceptional performance and provides fine mixing, grinding, and juicing of the ingredients.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/03.jpg"></div>
+                                <div class="details-des">
+                                    <h5>18000 RPM</h5>
+                                    <p>18000 Revolutions Per Minute of speed in this machine is powerful enough to take on the toughest of the tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/04.jpg"></div>
+                                <div class="details-des">
+                                    <h5>3 Speed Settings</h5>
+                                    <p>3 Speed settings for proper juicing, mixing, or grinding. It saves the ingredients from overmixing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/05.jpg"></div>
+                                <div class="details-des">
+                                    <h5>Easy To Clean</h5>
+                                    <p>The jars and juicer are easy to clean. Jars are washable and juicer can be wiped with a clean cloth to keep it clean.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/06.jpg"></div>
+                                <div class="details-des">
+                                    <h5>2 Jars Included</h5>
+                                    <p>To fulfill your mixing and grinding needs, this package comes with 2 jars</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card p-3">
+                                <div class="thumb-post"><img src="assets/new/img/product-detials/07.jpg"></div>
+                                <div class="details-des">
+                                    <h5>Easy Grip Jar Handles</h5>
+                                    <p>For firm grip on the jars, the handles are made easy to hold and make a strong grip.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+           
+            <!--Our Product slider section start-->
+            <div class="our-products my-3 my-md-5">
+                <div class="">
+                    <div class="slider-main-title mb-3">
+                        <h2>You May Also Like</h2>
+                    </div>
+                    <div class="product-slider owl-theme owl-carousel">
+
+                        <div class="product-box" *ngFor="let justArrive of justArrived">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <a routerLink="/product/{{justArrive.slug}}"><img alt="{{justArrive.alt_tag}}" title="{{justArrive.title_tag}}" src="{{justArrive.product_banner}}"></a>
+                                    
+                                    <div class="overlay-box">
+                                        <a (click)="addToCartRelated(justArrive.id,1);" style="cursor:pointer" class="product-icon"><i class="fa-solid fa-cart-plus"></i></a>
+                                        <a href="" (click)="setQuickView(justArrive);" data-bs-toggle="modal" data-bs-target="#quickviewModel" class="product-icon mobile-quick-view"><i class="fa-regular fa-eye"></i></a>
+                                        <a  style="cursor:pointer" (click)="addToWishList('A',justArrive.id)" *ngIf="justArrive.is_wishlist == 0" class="product-icon"><i class="fa-regular fa-heart"></i></a>
+                                        <a style="cursor:pointer" (click)="addToWishList('R',justArrive.id)" *ngIf="justArrive.is_wishlist > 0" class="product-icon"><i style="color:#e75480" class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-detial">
+                                    <h3><a target="_blank" title="{{justArrive.product_name}}" routerLink="/product/{{justArrive.slug}}">{{justArrive.title}}</a></h3>
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <div class="star-rating">
+                                            <span class="star">{{justArrive.rating}} 
+                                                <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" hight="10px" width="20px"> 
+                                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                                                </svg>
+                                            </span>                                            
+                                        </div>
+                                        <div class="ms-2">
+                                            <p class="review">({{justArrive.no_of_reviews}})</p>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                        <div class="main-price">
+                                            <del>₹{{justArrive.price}}</del>
+                                        </div>
+                                        <div class="ms-2 offer-price">
+                                            <h4 class="fw-bold">₹{{justArrive.list_price}}</h4>
+                                        </div>
+                                        <div *ngIf="justArrive.discount_percentage > 0" class="offer ms-2">{{justArrive.discount_percentage}}% OFF</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+
+                    <!-- <div class="text-center mt-3 mt-md-3">
+                        <a href="#" class="view-more d-flex align-items-center justify-content-center">View All <img src="assets/new/img/view_all_arrow.svg" class="ms-2 w-32"></a>
+                    </div> -->
+                </div>
+            </div>
+            <!--Our Product slider section end -->
+
+            <!--Product details end here-->
+        </div>
+
+    </div>
+
+    <!--Product Quick view Modal start-->
+    <div class="modal fade" id="quickviewModel" tabindex="-1" aria-labelledby="quickviewModelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 p-3">
+                    <button type="button" class="btn-close" id="quick-view-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-3 py-0 pb-4">
+                    <div class="quick-product-view">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="carouselExample" class="carousel slide quick-view-img">
+                                    <div class="carousel-inner">
+                                        <div *ngFor="let p_image of quickViewProduct?.product_images; let i = index;" [ngClass]="{'active': i === 0}" class="carousel-item" >
+                                          <img src="{{p_image.image}}" class="d-block w-100" alt="...">
+                                        </div>
+                                    </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </button>
+                                    
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div> 
+
+                                <div class="d-flex pt-4 text-center justify-content-center">
+                                    <a style="cursor:pointer" (click)="addToWishList('A',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist == 0" class="view-more"><i class="fa-regular fa-heart me-2"></i> Add to Wishlist</a>
+                                    <a style="cursor:pointer" (click)="addToWishList('R',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist > 0" class="view-more"><i class="fa-solid fa-heart me-2"></i> Remove from Wishlist</a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="product-details">
+                                    <h4>{{quickViewProduct?.product_name}}</h4>     
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <div class="star-rating">
+                                            <span class="star">{{quickViewProduct?.rating}} 
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>                                            
+                                        </div>
+                                        <div class="ms-2">
+                                            <p class="review">{{quickViewProduct?.no_of_reviews}} Ratings</p>
+                                        </div>
+                                    </div>  -->
+
+                                    <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                        <div class="main-price fs-4">
+                                            <del>₹{{quickViewProduct?.price}} </del>
+                                        </div>
+                                        <div class="ms-2 offer-price">
+                                            <h4 class="fw-bold fs-3">₹{{quickViewProduct?.list_price}}</h4>
+                                        </div>
+                                        <div *ngIf="quickViewProduct?.discount_percentage > 0" class="offer ms-2 fs-4">{{quickViewProduct?.discount_percentage}}% OFF</div>
+                                        
+                                    </div>   
+
+                                    <div *ngIf="quickViewProduct?.product_features.length > 0" class="product-quick-info">
+                                        <ul>
+                                            <li *ngFor="let p_feature of quickViewProduct?.product_features;">{{p_feature}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mt-4 p-2 p-md-3 rounded text-bg-light add-to-cart-section-m">
+                                        <div class="qty-input me-1 me-md-3 ">
+                                            <button (click)="qtyIncrement('Minus')" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                            <input class="product-qty" id="product-qty" type="number" name="product-qty" min="0" max="12" value="1">
+                                            <button (click)="qtyIncrement('Add')" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                        </div>
+                                       
+                                        <a id="addTocartBtnPopUp" style="cursor:pointer" (click)="addToCartRelated(quickViewProduct?.id,0)" class="btn btn-primary me-1 me-md-3"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
+                                    </div>
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <span class="shareiton me-2">Share On:</span>
+                                        <div class="share-icons">
+                                            <a href="#" class="me-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-x-twitter"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                                        </div>
+                                    </div> -->                               
+                                            
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Product Quick view Modal end-->
+
+
+    <!--Footer section start here-->
+        <app-footer></app-footer>
+    <!--Footer Section end here-->
+
+</div>

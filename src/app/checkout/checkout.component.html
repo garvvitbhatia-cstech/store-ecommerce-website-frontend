@@ -1,0 +1,297 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--inner page banner start here-->
+        <div class="inner-page-banner">
+            <img src="assets/new/img/simple-modern.jpg">
+            <div class="pageheading-overlay">
+               
+            </div>
+        </div>
+        <!--inner page banner end here-->
+        <div class="container pt-5">
+            <div class="row inner-main-page desktops-class">
+                <div class="col-md-8">
+                    <!-- <div class="already-box-checkout mb-3 ">
+                        <span>Already have an Account <a href="#" class="login-link"> Login</a></span>
+                    </div> -->
+                    <form action="" class="shipping-adderss-main mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="shipping-title">Billing Address</span>
+                            
+                        </div>
+                        <div class="row g-3 my-2">
+                            
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">First Name</label>
+                                <input class="form-control" id="b_first_name" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Last name</label>
+                                <input class="form-control" id="b_last_name" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Email-Address</label>
+                                <input class="form-control" id="b_email" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Mobile No</label>
+                                <input class="form-control" maxlength="10" id="b_mobile" type="text">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Address</label>
+                                <input class="form-control" id="b_address" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">City</label>
+                                <input class="form-control" readonly value="Jaipur" id="b_city" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">State</label>
+                                <input class="form-control" readonly value="Rajasthan" id="b_state" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Country</label>
+                                <select id="b_country" class="custom-select form-select">
+                                    <option value="India">India</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Zipcode</label>
+                                <input class="form-control" (blur)="checkBillingZipcode()" id="b_zipcode" maxlength="6" type="text">
+                            </div>
+                            
+                            
+                        </div>
+                    </form>
+
+                    <form action="" class="shipping-adderss-main">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="shipping-title">Shipping Address</span>
+                            <div class="list-group-item align-items-center d-flex  makeTitle border-0">
+                               
+                                <input class="form-check-input mt-0  me-1" type="checkbox" (change)="chooseReceivable($event)" class="shipping_address" id="">&nbsp;
+                                Same as Billing Address
+                            </div>
+                            
+                        </div>
+                        <div class="row g-3 my-2">
+                            
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">First Name</label>
+                                <input class="form-control" id="s_first_name" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Last name</label>
+                                <input class="form-control" id="s_last_name" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Email-Address</label>
+                                <input class="form-control" id="s_email" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Mobile No</label>
+                                <input class="form-control" maxlength="10" id="s_mobile" type="text">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Address</label>
+                                <input class="form-control" id="s_address" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">City</label>
+                                <input class="form-control" readonly value="Jaipur" id="s_city" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">State</label>
+                                <input class="form-control" readonly value="Rajasthan" id="s_state" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Country</label>
+                                <select id="s_country" class="custom-select form-select">
+                                    <option value="India">India</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Zipcode</label>
+                                <input class="form-control" (blur)="checkShippingZipcode()" id="s_zipcode" maxlength="6" type="text">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="payment-method-blog my-4">
+                        <span class="shipping-title">Payment method</span>
+                        <div class="row mt-4">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="form-check align-items-center mt-0">
+                                    
+                                    <input type="radio" class="form-check-input mt-0" (change)="selectPaymentMethod('Online')" checked name="payment" id="Online">
+                                    <label class="form-check-label ps-2" for="flexRadioDefault1">
+                                        Online
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-center">
+                                
+                                <input type="radio" class="form-check-input mt-0" (change)="selectPaymentMethod('COD')" name="payment" id="COD">
+                                <label class="form-check-label ps-2" for="flexRadioDefault2">
+                                Cash on Delivery
+                                </label>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rightsidebar">
+                        <div class="accordion myOrder-tab-cls" id="accordionExample">
+                        
+                            <div class="summary-box mb-3">
+                                <div class="accordion-header">
+                                    <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
+                                        <span class="fit-box d-flex justify-content-between align-items-center ">
+                                            <span class="fitlest-textt d-flex fw-bold align-items-center"> <span class="cart-icons pe-1"><img src="assets/new/img/cart-icon.svg" alt=""></span>Order Summary</span>
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingtwo" data-bs-parent="#accordionExample">
+                                    <div class="list-product-row">
+
+
+                                    <div *ngFor="let cartItem of cartItems.items" class="product-list my-3 d-flex">
+                                        <a href="#" class="product-img">
+                                            <img src="{{cartItem.product_image}}" width="100%" class="img-bxx">
+                                        </a>
+                                        <div class="kk-contant-boxb cart-box-cnt w-100 align-items-center  d-flex justify-content-between">
+                                            <span>
+                                                <a href="#" class="d-block cat-head pt-2 fs-1 text-capitalize">{{cartItem.title}}</a>
+                                                <span class="d-flex kk-price-num align-items-center py-1">1 <span class="kk-price-num ps-2 fw-normal">item</span> </span>
+                                            </span>
+                                            <a href="#" class="fw-bold fs-1">
+                                                ₹{{cartItem.total_price}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                  
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="summary-box mb-3">
+                                <div class="accordion-header">
+                                    <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="true" aria-controls="collapsethree">
+                                        <span class="fit-box d-flex justify-content-between align-items-center ">
+                                            <span class="fitlest-textt d-flex fw-bold align-items-center"> <span class="cart-icons pe-1"><img src="assets/new/img/offers-icon.svg" alt=""></span>Apply Offers</span>
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingtwo" data-bs-parent="#accordionExample">
+                                    <div class="list-product-row">
+
+                                            <div *ngFor="let discount of discounts" class="product-list align-items-center my-3 d-flex">
+                                                <a href="#" class="product-off me-2">
+                                                    <span class="discount-price">{{discount.discount_text}}</span>
+                                                </a>
+                                                <div class="kk-contant-boxb cart-box-cnt w-100 align-items-center  d-flex justify-content-between">
+                                                    <span>
+                                                        <span class="d-block cat-head pt-2 fs-1 text-capitalize ">Coupon <span class="title-dscnt">{{discount.coupon}}</span> Applied!</span>
+                                                        
+                                                    </span>
+                                                    <a (click)="removeCoupon(discount.id)" style="cursor:pointer" class="apd-box fs-1 text-white">
+                                                        Delete
+                                                    </a>
+                                                </div>
+                                            </div> 
+                                            
+                                            <div class="product-list align-items-center my-3 d-flex">
+                                                <form action="" class=" w-100">
+                                                    <label for="" class="fw-bold">Coupon Code</label>
+                                                    <div class="input-group mt-2 coupon-btn mb-3 d-flex justify-content-between">
+                                                        <input type="text" id="coupon_code" class="form-control me-3" placeholder="Enter Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                        <a style="cursor:pointer" (click)="applyCoupon()" class="input-group-text" >Apply</a>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                           
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="summary-box px-3 pt-3">
+                                <span class="fit-box pt-2 d-flex justify-content-between align-items-center ">
+                                    <span class="fitlest-textt d-flex fw-bold align-items-center"> <span class="cart-icons pe-1"><img src="assets/new/img/rupye-offers.svg" alt=""></span>Your Order</span>
+                                </span>
+                                <ul class="list-product-row order-list-row p-0 pt-1 list-unstyled">
+                                    <li class="order-list">
+                                        <span class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="discount-price fs-1 fw-bold text-capitalize">Total Items:</span>
+                                            <span class=" fs-1 text-dark">
+                                                {{cartItems.items.length}}
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="order-list">
+                                        <span class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="discount-price fw-bold fs-1 text-capitalize">Sub Total</span>
+                                            <span class=" fs-1 text-dark">
+                                                ₹{{cartItems.sub_total}}
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="order-list">
+                                        <span class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="discount-price fs-1 fw-bold text-capitalize">Discount</span>
+                                            <span class=" fs-1 text-dark">
+                                                - ₹{{cartItems.discount}}
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="order-list">
+                                        <span class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="discount-price fs-1 fw-bold text-capitalize">Shipping</span>
+                                            <span class=" fs-1 text-dark">
+                                                ₹{{cartItems.shipping}}
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="order-list">
+                                        <span class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="discount-price fw-bold fs-5 text-uppercase">TOTAL:</span>
+                                            <span class=" fs-5 fw-bold text-dark">
+                                               ₹{{cartItems.total}}
+                                            </span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <span class="freelink pb-3 mt-3">Add a item with of ₹135/- to get FREE Shipping</span>
+                                
+                            </div>
+
+                            <div class="buy-btn-list text-center d-block">
+                                <a (click)="PlaceOrder()" style="cursor:pointer" id="order_btn" class="buy-btn d-md-block">Proceed to Payment</a>
+                                <a href="#" class="d-flex  payments-powered my-4 justify-content-center align-items-center"><span class="ps-2"><img src="assets/new/img/secure-icon.svg" alt=""></span> 100% Secure Payments powered by</a>
+                               
+                            </div>
+
+                   
+                        </div> 
+                    </div>
+                    
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!--Footer section start here-->
+    <app-footer></app-footer>
+    <!--Footer Section end here-->
+</div>
+
+

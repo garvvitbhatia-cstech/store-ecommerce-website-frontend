@@ -1,0 +1,137 @@
+<header>
+    <!--header-top start-->
+    <div class="pre-header">
+        <div class="container">
+            <marquee>
+                <div class="callus_left"><span style="color:#fff" *ngFor="let Offer of Offers" >{{Offer.title}} &nbsp;&nbsp;</span></div> 
+                </marquee>
+            <!-- <div class="col-md-3 mx-auto">
+                <div class="top-stip-offer owl-carousel owl-theme owl-carousel">
+
+                    <div *ngFor="let Offer of Offers" class="item">
+                        <p>{{Offer.title}}</p>
+                    </div>
+
+                    
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!--header top end-->
+
+    <div class="header">
+        <!--Main header start-->
+
+            <nav class="navbar navbar-expand-lg p-0">
+              <div class="container-fluid">
+                  <a class="navbar-brand mt-32 normal-logo" routerLink="/"><img src="assets/new/img/headerlogo.png"></a>
+                  <a routerLink="/" class="navbar-brand sticky-logo"><img src="assets/new/img/sticky_logo.png"></a>
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                             <button type="button" class="btn-close me-auto ms-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <ul class="navbar-nav mx-lg-auto">
+
+                            <li *ngFor="let menuCategory of menuCategories" class="nav-item dropdown has-megamenu">
+                              <a class="nav-link dropdown-toggle" routerLink="/shop/{{menuCategory.slug}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{menuCategory.title}}</a>
+                              <div class="dropdown-menu megamenu">
+                                <div class="row">
+
+                                    <div *ngFor="let menuSubCategory of menuCategory.sub_categories" class="col-lg-2">
+                                        <ul class="mega-menu-links">
+                                            <li><a class="nav-link" routerLink="/shop/{{menuCategory.slug}}/{{menuSubCategory.slug}}"><strong>{{menuSubCategory.title}}</strong></a></li>
+
+                                            <li *ngFor="let menuSubSubCategory of menuSubCategory.sub_sub_categories"><a class="nav-link" routerLink="/shop/{{menuCategory.slug}}/{{menuSubCategory.slug}}/{{menuSubSubCategory.slug}}">{{menuSubSubCategory.title}}</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                              </div>
+                              
+                            </li>
+                          </ul>
+                        
+                    </div>
+
+                    <div class="header-icon-with-text d-flex align-items-center justify-content-center ms-auto ms-lg-0 me-2 me-lg-0">
+                        <a class="d-flex flex-column align-items-center justify-content-center mx-2 mx-md-3" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">
+                            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.1893 28.0898C22.8086 28.0898 28.1746 22.7238 28.1746 16.1045C28.1746 9.48516 22.8086 4.11914 16.1893 4.11914C9.57 4.11914 4.20398 9.48516 4.20398 16.1045C4.20398 22.7238 9.57 28.0898 16.1893 28.0898Z" stroke="#292929" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M24.5239 25.062L29.2226 29.7487" stroke="#292929" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>                                    
+                            <span class="d-none d-xl-block">Search</span>
+                        </a>
+
+                        <div *ngIf="isLogin" class="dropdown profile-dropdown">
+                            <a href="" class="d-flex flex-column align-items-center justify-content-center mx-2 mx-md-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_1_748)">
+                                    <path d="M16.5 20.415C20.9183 20.415 24.5 16.8333 24.5 12.415C24.5 7.99676 20.9183 4.41504 16.5 4.41504C12.0817 4.41504 8.5 7.99676 8.5 12.415C8.5 16.8333 12.0817 20.415 16.5 20.415Z" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4.37366 27.4139C5.60311 25.2858 7.37092 23.5188 9.49951 22.2903C11.6281 21.0617 14.0425 20.415 16.5002 20.415C18.9578 20.4151 21.3722 21.0618 23.5008 22.2904C25.6294 23.519 27.3971 25.286 28.6265 27.4141" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>                                   
+                                <span class="d-none d-xl-block">{{username}}</span>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" routerLink="/my-account">My Profile</a></li>
+                                <li><a class="dropdown-item" routerLink="/settings">My Settings</a></li>
+                                <li><a class="dropdown-item" routerLink="/my-orders">My Orders</a></li>
+                                <li><a class="dropdown-item" routerLink="/my-wishlist">My Wishlist</a></li>
+                                <li><a class="dropdown-item" style="cursor:pointer" (click)="logout()">Logout</a></li>
+                            </ul>
+                        </div>
+
+                        <a *ngIf="!isLogin" href="" data-bs-toggle="modal" data-bs-target="#loginSignupToggle" class="d-flex flex-column align-items-center justify-content-center  mx-2 mx-md-3">
+                            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_1_748)">
+                                <path d="M16.5 20.415C20.9183 20.415 24.5 16.8333 24.5 12.415C24.5 7.99676 20.9183 4.41504 16.5 4.41504C12.0817 4.41504 8.5 7.99676 8.5 12.415C8.5 16.8333 12.0817 20.415 16.5 20.415Z" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M4.37366 27.4139C5.60311 25.2858 7.37092 23.5188 9.49951 22.2903C11.6281 21.0617 14.0425 20.415 16.5002 20.415C18.9578 20.4151 21.3722 21.0618 23.5008 22.2904C25.6294 23.519 27.3971 25.286 28.6265 27.4141" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </svg>                                   
+                            <span class="d-none d-xl-block">Login/Sign up</span>
+                        </a>
+
+                        <a (click)="checkLogin('cart')" style="cursor:pointer" class="d-flex flex-column align-items-center justify-content-center ms-2 position-relative">
+                            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 20.415V12.415M19 20.415V12.415M7 20.415V12.415M5 8.41504L7 0.415039M21 8.41504L19 0.415039M1 8.41504L3 24.415H23L25 8.41504H1Z" stroke="#292929"></path>
+                            </svg>                                   
+                            <span class="d-none d-xl-block">Cart</span>
+                            <div class="count-cart">
+                                <span>{{cartCount}}</span>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+
+              </div>
+            </nav>
+        <!--Main header end-->
+
+        <!--Search box start here-->
+            <div class="collapse multi-collapse" id="multiCollapseExample2" data-bs-dismiss="multiCollapseExample2">
+              <div class="header-search-box d-flex">
+                
+                    <input class="form-control me-2" (keyup.enter)="searchNow()" id="search_box" type="text" placeholder="Search for proudcts" aria-label="Search">
+                    <button class="btn btn-success" (click)="searchNow()" type="button">
+                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.1893 28.0898C22.8086 28.0898 28.1746 22.7238 28.1746 16.1045C28.1746 9.48516 22.8086 4.11914 16.1893 4.11914C9.57 4.11914 4.20398 9.48516 4.20398 16.1045C4.20398 22.7238 9.57 28.0898 16.1893 28.0898Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M24.5239 25.062L29.2226 29.7487" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg> 
+                    </button>
+              
+              </div>
+            </div>
+        <!--Search box end here-->
+    </div>
+
+    <!--Hero banner start-->
+        <app-slider *ngIf="currentUrl == '/'"></app-slider>
+    <!--Hero banner end-->
+
+</header>

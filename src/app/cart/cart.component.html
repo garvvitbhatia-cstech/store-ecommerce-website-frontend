@@ -1,0 +1,136 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--inner page banner start here-->
+        <div class="inner-page-banner">
+            <img src="assets/new/img/simple-modern.jpg">
+            <div class="pageheading-overlay">
+                <h2 class="text-center text-white">My Cart Items</h2>
+               
+            </div>
+        </div>
+        <!--inner page banner end here-->
+        <div class="container">
+            <!--Product list start here-->
+            <div class="row inner-main-page mt-15">
+                   
+                <div class="col-md-8">
+                   <div class="row">
+                        <div class="col-12">
+                            <div *ngIf="cartItems.items.length == 0" class="cart-box-single cart-boxs my-3 d-flex position-relative  align-items-start">
+                                        No items in cart..!
+
+                            </div>
+                           <div *ngFor="let cartItem of cartItems.items" class="cart-box-single cart-boxs my-3 d-flex position-relative  align-items-start">
+                                <a target="_blank" routerLink="/product/{{cartItem.slug}}" class="product-img">
+                                    <img src="{{cartItem.product_image}}" class="img-boxs">
+                                </a>
+                                <div class="kk-contant-boxb cart-box-cnt">
+                                    <a target="_blank" routerLink="/product/{{cartItem.slug}}" title="{{cartItem.product_name}}" class="d-block cat-head">{{cartItem.title}}</a>
+                                    
+                                    <span class="d-flex kk-price-num align-items-center py-2">₹{{cartItem.list_price}}<span class="kk-price-num2 ps-2">₹{{cartItem.price}}</span> <b *ngIf="cartItem.discount_percentage > 0" class="btn-off ms-3">{{cartItem.discount_percentage}}% Off</b></span>
+                                    <div class="d-flex align-items-center">
+                                        <div class="number cont-ad-name">
+                                            
+                                            <input (blur)="updateQty(cartItem.id)" maxlength="2" id="qty_{{cartItem.id}}" type="text"  value="{{cartItem.quantity}}">
+                                            
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="remove-from-cart d-flex ms-auto">
+                                    
+
+                                    <a style="cursor:pointer" (click)="removeRow(cartItem.id)" class="cross-icons-box ms-3"><span class="move-to-cart">Remove</span> <svg width="16" height="18" viewBox="0 0 20 22" fill="none">
+                                        <path d="M1 5H19M17 5V19C17 19.5304 16.7893 20.0391 16.4142 20.4142C16.0391 20.7893 15.5304 21 15 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5M6 5V3C6 2.46957 6.21071 1.96086 6.58579 1.58579C6.96086 1.21071 7.46957 1 8 1H12C12.5304 1 13.0391 1.21071 13.4142 1.58579C13.7893 1.96086 14 2.46957 14 3V5M8 10V16M12 10V16" stroke="#03A6BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                    </a>
+                                </div>
+                           </div>
+                           
+                        </div>
+                   </div>
+                    
+                </div>
+                <div class="col-md-4">
+                    <div class="rightsidebar my-3">
+                            <div class="accordion myOrder-tab-cls" id="accordionExample">
+                                
+
+                                <div class="summary-box px-3 pt-3">
+                                    <span class="fit-box pt-2 d-flex justify-content-between align-items-center ">
+                                        <span class="fitlest-textt d-flex fw-bold align-items-center"> <span class="cart-icons pe-1"><img src="assets/new/img/rupye-offers.svg" alt=""></span>Your Order</span>
+                                    </span>
+                                    <ul class="list-product-row order-list-row p-0 pt-1 list-unstyled">
+                                        <li class="order-list">
+                                            <span class="d-flex w-100 justify-content-between align-items-center">
+                                                <span class="discount-price fs-1 fw-bold text-capitalize">Total Items:</span>
+                                                <span class=" fs-1 text-dark">
+                                                    {{cartItems.items.length}}
+                                                </span>
+                                            </span>
+                                        </li>
+                                        <li class="order-list">
+                                            <span class="d-flex w-100 justify-content-between align-items-center">
+                                                <span class="discount-price fw-bold fs-1 text-capitalize">Sub Total</span>
+                                                <span class=" fs-1 text-dark">
+                                                    ₹{{cartItems.sub_total}}
+                                                </span>
+                                            </span>
+                                        </li>
+                                        <li class="order-list">
+                                            <span class="d-flex w-100 justify-content-between align-items-center">
+                                                <span class="discount-price fs-1 fw-bold text-capitalize">Discount</span>
+                                                <span class=" fs-1 text-dark">
+                                                    - ₹{{cartItems.discount}}
+                                                </span>
+                                            </span>
+                                        </li>
+                                        <li class="order-list">
+                                            <span class="d-flex w-100 justify-content-between align-items-center">
+                                                <span class="discount-price fs-1 fw-bold text-capitalize">Shipping</span>
+                                                <span class=" fs-1 text-dark">
+                                                    ₹{{cartItems.shipping}}
+                                                </span>
+                                            </span>
+                                        </li>
+                                        <li class="order-list">
+                                            <span class="d-flex w-100 justify-content-between align-items-center">
+                                                <span class="discount-price fw-bold fs-5 text-uppercase">TOTAL:</span>
+                                                <span class=" fs-5 fw-bold text-dark">
+                                                   ₹{{cartItems.total}}
+                                                </span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <span class="freelink pb-3 mt-2">Add a item with of 135/- to get FREE Shipping</span>
+                                    
+                                </div>
+
+                                <div *ngIf="cartItems.total > 0" class="buy-btn-list text-center d-block">
+                                    <a  routerLink="/checkout"class="buy-btn d-md-block">Proceed to Buy</a>
+                                    <a href="#" class="d-flex  payments-powered my-4 justify-content-center align-items-center"><span class="ps-2"><img src="assets/new/img/secure-icon.svg" alt=""></span> 100% Secure Payments powered by</a>
+                                    
+                                </div>
+
+                       
+                            </div> 
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <!-- <div class="input-group">
+                <input type="text" id="coupon_code" style=""  class="form-control mr-10" placeholder="Enter Coupon Code">
+                <div class="input-group-append">
+                    <button (click)="applyCoupon()" class="btn btn-primary">Apply Coupon</button>
+                </div>
+                
+            </div> -->
+         
+        </div>
+    </div>
+    <!--Footer section start here-->
+    <app-footer></app-footer>
+    <!--Footer Section end here-->
+</div>

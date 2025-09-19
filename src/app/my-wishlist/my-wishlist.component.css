@@ -1,0 +1,9 @@
+.product-img {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    display: flex;
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+}

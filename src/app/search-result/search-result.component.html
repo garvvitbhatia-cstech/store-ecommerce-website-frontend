@@ -1,0 +1,553 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--inner page banner start here-->
+        <div class="inner-page-banner">
+            <img src="assets/new/img/simple-modern.jpg">
+            <div class="pageheading-overlay">
+                <h2 class="text-center text-white">{{categoryData?.title}}</h2>
+               
+            </div>
+        </div>
+        <!--inner page banner end here-->
+        <div class="container">
+            <!--Product list start here-->
+            <div class="row ">
+                <!--left filter bar start-->
+                <div class="col-lg-3 col-md-12">
+                    <div class="mobile-view mob-bottom-fixed" >
+                       <a href="" class="filter-tab-mob" data-bs-toggle="modal" data-bs-target="#exampleModal">Filter</a>
+                       <a href="" class="sort-by-tab-mob" data-bs-toggle="modal" data-bs-target="#exampleModal2">Sort By</a>
+                    </div>
+                        
+                    <div class="filter-left-dektop">
+                        <div class="my-3 my-lg-5">
+                            <div class="accordion" id="accordionExample">
+                                
+                                <div class="accordion-item">
+                                    <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Filter by Price</h5>
+                                    
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        <div id="filter_by_price" class="">
+                                            <form>
+
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'500_1000')" class="custom-control-input" id="500_1000">
+                                                    <label class="custom-control-label" for="500_1000">500 - 1000</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'1000_1500')" class="custom-control-input" id="1000_1500">
+                                                    <label class="custom-control-label" for="1000_1500">1000 - 1500</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'1500_2000')" class="custom-control-input" id="1500_2000">
+                                                    <label class="custom-control-label" for="1500_2000">1500 - 2000</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'2000_2500')" class="custom-control-input" id="2000_2500">
+                                                    <label class="custom-control-label" for="2000_2500">2000 - 2500</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'2500_3000')" class="custom-control-input" id="2500_3000">
+                                                    <label class="custom-control-label" for="2500_3000">2500 - 3000</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'3000_3500')" class="custom-control-input" id="3000_3500">
+                                                    <label class="custom-control-label" for="3000_3500">3000 - 3500</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'3500_4000')" class="custom-control-input" id="3500_4000">
+                                                    <label class="custom-control-label" for="3500_4000">3500 - 4000</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByPrice($event,'4000_10000000')" class="custom-control-input" id="4000_10000000">
+                                                    <label class="custom-control-label" for="4000_10000000">4000 Above</label>
+                                                </div>
+                                            </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">Filter by Ratings</h5>
+                                    <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <form>
+
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByRating($event,4)" class="custom-control-input" id="rating_4">
+                                                    <label class="custom-control-label" for="rating_4">4<small class="fas fa-star"></small> & above</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByRating($event,3)" class="custom-control-input" id="rating_3">
+                                                    <label class="custom-control-label" for="rating_3">3<small class="fas fa-star"></small> & above</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByRating($event,2)" class="custom-control-input" id="rating_2">
+                                                    <label class="custom-control-label" for="rating_2">2<small class="fas fa-star"></small> & above</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByRating($event,1)" class="custom-control-input" id="rating_1">
+                                                    <label class="custom-control-label" for="rating_1">1<small class="fas fa-star"></small> & above</label>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Filter by Discount</h5>
+                                 
+                                    <div id="collapsefive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <form>
+
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByDiscount($event,'70_100')" class="custom-control-input" id="discount_70">
+                                                    <label class="custom-control-label" for="discount_70">70% or more</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByDiscount($event,'60_70')" class="custom-control-input" id="discount_60">
+                                                    <label class="custom-control-label" for="discount_60">60% or more</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByDiscount($event,'50_60')" class="custom-control-input" id="discount_50">
+                                                    <label class="custom-control-label" for="discount_50">50% or more</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByDiscount($event,'40_50')" class="custom-control-input" id="discount_40">
+                                                    <label class="custom-control-label" for="discount_40">40% or more</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByDiscount($event,'30_40')" class="custom-control-input" id="discount_30">
+                                                    <label class="custom-control-label" for="discount_30">30% or more</label>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="accordion-item">
+                                    <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">Filter by Offers</h5>
+                                 
+                                    <div id="collapseseven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <form>
+
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByOffer($event,'no_cost_emi')" class="custom-control-input" id="no_cost_emi">
+                                                    <label class="custom-control-label" for="no_cost_emi">No Cost EMI</label>
+                                                </div>
+                                                <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                                    <input type="checkbox" (change)="filterByOffer($event,'special_offer')" class="custom-control-input" id="special_offer">
+                                                    <label class="custom-control-label" for="special_offer">Special Offer</label>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--left filter bar end-->
+
+                <!--Right Product items start-->
+                <div class="col-lg-9 col-md-12">
+                    <!--Our Product slider section start-->
+                        <div class="our-products my-3 my-lg-5">
+                            <div class="col-12 pb-1">Home/Search</div>
+                                    <!-- <p *ngIf="pageTotal > 0" class="text-body-secondary my-2">Showing 1 – {{pageTo}} of {{pageTotal}} results</p> -->
+                                    <div class="col-12 pb-1 d-none d-md-flex">
+                                        <b class="text-body-secondary">Sort By: </b>
+                                        <a class="ml-1 mrr-1" id="relevance" (click)="ShortData('relevance')"> Relevance</a> 
+                                        <a class="ml-1 mrr-1" id="popularity" (click)="ShortData('popularity')">Popularity</a> 
+                                        <a class="ml-1 mrr-1" id="low_to_hight" (click)="ShortData('low_to_hight')">Price -- Low to High</a> 
+                                        <a class="ml-1 mrr-1" id="high_to_low" (click)="ShortData('high_to_low')">Price -- High to Low</a> 
+                                        <a class="ml-1 mrr-1" id="newest_first" (click)="ShortData('newest_first')">Newest First</a>
+                                    </div>
+                                    
+                                    <div class="product-listing">
+                                        <div class="row">
+
+                                            <div *ngFor="let product of products" class="col-lg-4 col-6">
+                                               <div class="product-box">
+                                                    <div class="product-item">
+                                                        <div class="product-thumb">
+                                                            <a routerLink="/product/{{product.slug}}"><img alt="{{product.alt_tag}}" title="{{product.title_tag}}" src="{{product.product_image}}"></a>
+                                                            <div class="overlay-box">
+                                                                <a (click)="addToCart(product.id,1);" style="cursor:pointer" class="product-icon"><i class="fa-solid fa-cart-plus"></i></a>
+                                                                <a href="" (click)="setQuickView(product);" data-bs-toggle="modal" data-bs-target="#quickviewModel" class="product-icon mobile-quick-view"><i class="fa-regular fa-eye"></i></a>
+                                                                <a  style="cursor:pointer" (click)="addToWishList('A',product.id)" *ngIf="product.is_wishlist == 0" class="product-icon"><i class="fa-regular fa-heart"></i></a>
+                                                                <a style="cursor:pointer" (click)="addToWishList('R',product.id)" *ngIf="product.is_wishlist > 0" class="product-icon"><i style="color:#e75480" class="fa-solid fa-heart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-detial">
+                                                            <h3><a target="_blank" routerLink="/product/{{product.slug}}">{{product.title}}</a></h3>
+                                                            <!-- <div class="d-flex align-items-center mt-3">
+                                                                <div class="star-rating">
+                                                                    <span class="star">{{product.rating}} <i class="fa-solid fa-star"></i>
+                                                                    </span>                                            
+                                                                </div>
+                                                                <div class="ms-2">
+                                                                    <p class="review">({{product.no_of_reviews}})</p>
+                                                                </div>
+                                                            </div> -->
+
+                                                            <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                                                <div class="main-price">
+                                                                    <del>₹{{product.price}}</del>
+                                                                </div>
+                                                                <div class="ms-2 offer-price">
+                                                                    <h4 class="fw-bold">₹{{product.list_price}}</h4>
+                                                                </div>
+                                                                <div *ngIf="product.discount_percentage > 0" class="offer ms-2">{{product.discount_percentage}}% OFF</div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                    
+                                            </div>
+                                            
+                                        </div>
+
+                                       
+                                        <div *ngIf="products.length == 0 && !loader" style="text-align:center" class="col-lg-12 col-md-12 col-sm-12 no-record">
+                                            Sorry for inconvenience...Your product will be available soon.. Thank you
+                                        </div>
+                                        <div *ngIf="loader" style="text-align:center" class="col-lg-12 col-md-12 col-sm-12 pb-1">
+                                            <span>Loading...</span>
+                                        </div>
+                                       
+                                        <div *ngIf="lastpage > page && loadMoreBtn" class="col-12 pb-1" style="text-align:center;">
+                                            <a (click)="loadMore()" class="btn btn-primary py-2 px-4">Load More</a>
+                                        </div> 
+                                        
+                                    </div>
+
+                                    
+                        </div>
+                    <!--Our Product slider section end -->
+                </div>
+                <!--Right Product item end-->
+            </div>
+            <!--Product list end here-->
+        </div>
+    </div>
+    <!--Footer section start here-->
+    <app-footer></app-footer>
+    <!--Footer Section end here-->
+</div>
+
+
+<!--Filter mobile view Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" *ngIf="sub_categories.length > 0" id="accordionExample">
+                    <div class="accordion-item">
+                        <h5 class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Filter by Sub Category</h5>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <form>
+
+                                <div *ngFor="let sub_category of sub_categories" class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" (change)="filterBySubcategory($event,sub_category.id)" class="custom-control-input" id="2sub_cate_id_{{sub_category.id}}">
+                                    <label class="custom-control-label" for="2sub_cate_id_{{sub_category.id}}">{{sub_category.title}}</label>
+                                    <span class="badge border font-weight-normal">{{sub_category.count}}</span>
+                                </div>
+                                
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Filter by Price</h5>
+                        
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div id="filter_by_price" class="">
+                                <form>
+
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'500_1000')" class="custom-control-input" id="500_1000_2">
+                                        <label class="custom-control-label" for="500_1000_2">500 - 1000</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'1000_1500')" class="custom-control-input" id="1000_1500_2">
+                                        <label class="custom-control-label" for="1000_1500_2">1000 - 1500</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'1500_2000')" class="custom-control-input" id="1500_2000_2">
+                                        <label class="custom-control-label" for="1500_2000_2">1500 - 2000</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'2000_2500')" class="custom-control-input" id="2000_2500_2">
+                                        <label class="custom-control-label" for="2000_2500_2">2000 - 2500</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'2500_3000')" class="custom-control-input" id="2500_3000_2">
+                                        <label class="custom-control-label" for="2500_3000_2">2500 - 3000</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'3000_3500')" class="custom-control-input" id="3000_3500_2">
+                                        <label class="custom-control-label" for="3000_3500_2">3000 - 3500</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'3500_4000')" class="custom-control-input" id="3500_4000_2">
+                                        <label class="custom-control-label" for="3500_4000_2">3500 - 4000</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByPrice($event,'4000_10000000')" class="custom-control-input" id="4000_10000000_2">
+                                        <label class="custom-control-label" for="4000_10000000_2">4000 Above</label>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+
+                          </div>
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="accordion-item">
+                        <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">Filter by Ratings</h5>
+                     
+                        <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByRating($event,4)" class="custom-control-input" id="rating_42">
+                                        <label class="custom-control-label" for="rating_42">4<small class="fas fa-star"></small> & above</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByRating($event,3)" class="custom-control-input" id="rating_32">
+                                        <label class="custom-control-label" for="rating_32">3<small class="fas fa-star"></small> & above</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByRating($event,2)" class="custom-control-input" id="rating_22">
+                                        <label class="custom-control-label" for="rating_22">2<small class="fas fa-star"></small> & above</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByRating($event,1)" class="custom-control-input" id="rating_12">
+                                        <label class="custom-control-label" for="rating_12">1<small class="fas fa-star"></small> & above</label>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Filter by Discount</h5>
+                     
+                        <div id="collapsefive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByDiscount($event,'70_100')" class="custom-control-input" id="discount_702">
+                                        <label class="custom-control-label" for="discount_702">70% or more</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByDiscount($event,'60_70')" class="custom-control-input" id="discount_602">
+                                        <label class="custom-control-label" for="discount_602">60% or more</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByDiscount($event,'50_60')" class="custom-control-input" id="discount_502">
+                                        <label class="custom-control-label" for="discount_502">50% or more</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByDiscount($event,'40_50')" class="custom-control-input" id="discount_402">
+                                        <label class="custom-control-label" for="discount_402">40% or more</label>
+                                    </div>
+                                    <div  class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByDiscount($event,'30_40')" class="custom-control-input" id="discount_302">
+                                        <label class="custom-control-label" for="discount_302">30% or more</label>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div *ngIf="Capacities.length > 0" class="accordion-item">
+                        <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">Filter by Capacity</h5>
+                     
+                        <div id="collapsesix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+
+                                    <div *ngFor="let capacity of Capacities" class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByCapacity($event,capacity.capacity)" class="custom-control-input" id="2capacity_{{capacity.capacity}}">
+                                        <label class="custom-control-label" for="2capacity_{{capacity.capacity}}">{{capacity.capacity}}</label>
+                                    </div>
+
+                                
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+
+                     <div class="accordion-item">
+                        <h5 class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">Filter by Offers</h5>
+                     
+                        <div id="collapseseven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        
+                                        <input type="checkbox" (change)="filterByOffer($event,'no_cost_emi')" class="custom-control-input" id="no_cost_emi_2">
+                            <label class="custom-control-label" for="no_cost_emi_2">No Cost EMI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                        <input type="checkbox" (change)="filterByOffer($event,'special_offer')" class="custom-control-input" id="special_offer_2">
+                            <label class="custom-control-label" for="special_offer_2">Special Offer</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<!--Filter mobile view Modal end-->
+
+
+<!--Filter mobile view Modal-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Short By</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-column">
+
+                    <a class="mb-2 mrr-1" id="relevance" (click)="ShortData('relevance')">Relevance</a> 
+                    <a class="mb-2 mrr-1" id="popularity" (click)="ShortData('popularity')">Popularity</a> 
+                    <a class="mb-2 mrr-1" id="low_to_hight" (click)="ShortData('low_to_hight')">Price -- Low to High</a> 
+                    <a class="mb-2 mrr-1" id="high_to_low" (click)="ShortData('high_to_low')">Price -- High to Low</a> 
+                    <a class="mb-2 mrr-1" id="newest_first" (click)="ShortData('newest_first')">Newest First</a>
+
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<!--Filter mobile view Modal end-->
+<!--Product Quick view Modal start-->
+<div class="modal fade" id="quickviewModel" tabindex="-1" aria-labelledby="quickviewModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0 p-3">
+                <button type="button" class="btn-close" id="quick-view-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body px-3 py-0 pb-4">
+                <div class="quick-product-view">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div id="carouselExample" class="carousel slide quick-view-img">
+                                <div class="carousel-inner">
+                                    <div *ngFor="let p_image of quickViewProduct?.product_images; let i = index;" [ngClass]="{'active': i === 0}" class="carousel-item" >
+                                      <img src="{{p_image.image}}" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </button>
+                                
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                            </div> 
+
+                            <div class="d-flex pt-4 text-center justify-content-center">
+                                <a style="cursor:pointer" (click)="addToWishList('A',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist == 0" class="view-more"><i class="fa-regular fa-heart me-2"></i> Add to Wishlist</a>
+                                <a style="cursor:pointer" (click)="addToWishList('R',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist > 0" class="view-more"><i class="fa-solid fa-heart me-2"></i> Remove from Wishlist</a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <h4>{{quickViewProduct?.product_name}}</h4>     
+                                <!-- <div class="d-flex align-items-center mt-3">
+                                    <div class="star-rating">
+                                        <span class="star">{{quickViewProduct?.rating}} 
+                                            <i class="fa-solid fa-star"></i>
+                                        </span>                                            
+                                    </div>
+                                    <div class="ms-2">
+                                        <p class="review">{{quickViewProduct?.no_of_reviews}} Ratings</p>
+                                    </div>
+                                </div>  -->
+
+                                <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                    <div class="main-price fs-4">
+                                        <del>₹{{quickViewProduct?.price}} </del>
+                                    </div>
+                                    <div class="ms-2 offer-price">
+                                        <h4 class="fw-bold fs-3">₹{{quickViewProduct?.list_price}}</h4>
+                                    </div>
+                                    <div *ngIf="quickViewProduct?.discount_percentage > 0" class="offer ms-2 fs-4">{{quickViewProduct?.discount_percentage}}% OFF</div>
+                                    
+                                </div>   
+
+                                <div *ngIf="quickViewProduct?.product_features.length > 0" class="product-quick-info">
+                                    <ul>
+                                        <li *ngFor="let p_feature of quickViewProduct?.product_features;">{{p_feature}}</li>
+                                    </ul>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center mt-4 p-2 p-md-3 rounded text-bg-light add-to-cart-section-m">
+                                    <div class="qty-input me-1 me-md-3 ">
+                                        <button (click)="qtyIncrement('Minus')" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                        <input class="product-qty" id="product-qty" type="number" name="product-qty" min="0" max="12" value="1">
+                                        <button (click)="qtyIncrement('Add')" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                    </div>
+                                   
+                                    <a style="cursor:pointer" (click)="addToCart(quickViewProduct?.id,0)" id="addTocartBtnPopUp" class="btn btn-primary me-1 me-md-3"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
+                                </div>
+                                <!-- <div class="d-flex align-items-center mt-3">
+                                    <span class="shareiton me-2">Share On:</span>
+                                    <div class="share-icons">
+                                        <a href="#" class="me-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#" class="me-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="#" class="me-2"><i class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#" class="me-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                                    </div>
+                                </div> -->                               
+                                        
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Product Quick view Modal end-->
+<!--Modal box star here-->
+<!--Modal box end here-->

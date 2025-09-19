@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+.product-img{
+    height: 270px;
+    text-align: center;
+}
+.max-height{ max-height: 100% !important;}
+@media (max-width: 767.98px) {
+    .mobile-quick-view{ display: none;}
+}
+.megamenu{ background-color: #F2F2F2;}
+.mega-menu-links .nav-link{background-color: #F2F2F2;}
+.no-record{    text-align: center;
+    border: 1px solid #f00;
+    border-radius: 4px;
+    color: #f00;
+    padding: 10px;
+    margin-top: 15px; background-color: bisque;}

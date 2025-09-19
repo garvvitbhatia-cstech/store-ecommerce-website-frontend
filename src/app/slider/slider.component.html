@@ -1,0 +1,38 @@
+<div>
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div *ngIf="HomeBanners.length > 0" class="carousel-inner">
+      <div class="carousel-item" *ngFor="let banner of HomeBanners; let i = index;" [ngClass]="{'active': i === 0}">
+        <img src="{{banner.banner}}" class="d-block w-100" alt="">
+        <div class="hero-caption">
+            <div class="container position-relative">
+                <div class="hero-caption-text">
+                    <p *ngIf="banner.text" class="sub-text">{{banner.text}}</p>
+                    <h1 *ngIf="banner.heading" [innerHTML]="banner.heading"></h1>
+                    <a *ngIf="banner.url" href="{{banner.url}}" class="btn btn-primary">Shop Now</a>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-inner" id="temp_banner">
+      <div class="carousel-item active">
+        <img src="https://api.anupamstores.com/public/assets/images/admin/banners/1720361195758548815.png" class="d-block w-100" alt="">
+        <div class="hero-caption">
+            <div class="container position-relative">
+                <div class="hero-caption-text">
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button *ngIf="HomeBanners.length > 1" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+
+    <button *ngIf="HomeBanners.length > 1" class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+
+  </div>
+</div>

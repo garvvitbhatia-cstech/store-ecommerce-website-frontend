@@ -1,0 +1,22 @@
+.summery_heading{ color: #fff !important;}
+.remove_coupon{    color: #fff;
+    background: #f00;
+    padding: 0px 5px;
+    border-radius: 4px;
+    cursor: pointer; text-decoration: none;}
+.form-control{ border: 1px solid #ccc;}
+
+.inner-page-banner {
+    position: relative;
+    height: 107px;
+    overflow: hidden;
+}
+.product-img {
+    height:85px;
+    text-align: center;
+}
+@media (max-width: 767.98px) {
+    .shipping-title {
+        font-size: 1rem;
+    }
+}

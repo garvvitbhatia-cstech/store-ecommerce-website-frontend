@@ -1,0 +1,68 @@
+.o_success_heading{color: #093;
+    font-size: 22px;
+    font-weight: bold;}
+.o_success_div{border: 2px solid #093;
+   
+    padding: 20px;}
+
+
+    .card{
+        text-align: center;
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #c8d0d8;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    i{
+        color: #9abc66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left: -15px;
+    }
+    h1 {
+        color: #88b04b;
+        font-family: Nunito Sans, Helvetica Neue, sans-serif;
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    p{
+        color: #404f5e;
+        font-family: Nunito Sans, Helvetica Neue, sans-serif;
+        font-size: 20px;
+        margin: 0;
+    }
+    .round{border-radius: 200px; height: 200px; width: 200px; background: #F8FAF5; margin: 0 auto;}
+    @media (max-width: 767.98px) {
+        .card {
+            text-align: center;
+            background: white;
+            padding: 17px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #c8d0d8;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        i {
+            color: #9abc66;
+            font-size: 44px;
+            line-height: 96px;
+            margin-left: -2px;
+        }
+        h1 {
+            color: #88b04b;
+            font-family: Nunito Sans, Helvetica Neue, sans-serif;
+            font-weight: 700;
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+        p{
+            color: #404f5e;
+            font-family: Nunito Sans, Helvetica Neue, sans-serif;
+            font-size: 13px;
+            margin: 0;
+        }
+        .round{border-radius: 200px; height: 100px; width: 100px; background: #F8FAF5; margin: 0 auto;}
+    }

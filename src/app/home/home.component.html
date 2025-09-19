@@ -1,0 +1,402 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--three-ad banner section start-->
+        <div class="three-ad-banner mt-3 mt-md-4">
+            <div class="container">
+                <div class="row" *ngIf="homepageAds?.one?.status == 1 || homepageAds?.two?.status == 1 || homepageAds?.three.status == 1">
+                    <div class="col-md-4 mb-3 mb-md-0" *ngIf="homepageAds.one.banner && homepageAds.one.status == 1">
+                        <div class="ad-3-box">
+                            <a href="{{homepageAds.one.url}}"><img src="{{homepageAds.one.banner}}"></a>
+                            <div class="add-caption">
+                                <h4>{{homepageAds.one.heading}}</h4>
+                                <p>{{homepageAds.one.text}}</p>
+                                <a href="{{homepageAds.one.url}}" *ngIf="homepageAds.one.url" class="btn btn-outline-dark">Shop Now</a>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3 mb-md-0" *ngIf="homepageAds.two.banner && homepageAds.two.status == 1">
+                        <div class="ad-3-box">
+                            <a href="{{homepageAds.two.url}}"><img src="{{homepageAds.two.banner}}"></a>
+                            <div class="add-caption">
+                                <h4>{{homepageAds.two.heading}}</h4>
+                                <p>{{homepageAds.two.text}}</p>
+                                <a href="{{homepageAds.two.url}}" *ngIf="homepageAds.two.url" class="btn btn-outline-dark">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 mb-3 mb-md-0" *ngIf="homepageAds.three.banner && homepageAds.three.status == 1">
+                        <div class="ad-3-box">
+                            <a href="{{homepageAds.three.url}}"><img src="{{homepageAds.three.banner}}"></a>
+                            <div class="add-caption">
+                                <h4>{{homepageAds.three.heading}}</h4>
+                                <p>{{homepageAds.three.text}}</p>
+                                <a href="{{homepageAds.three.url}}" *ngIf="homepageAds.three.url" class="btn btn-outline-dark">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--three-ad banner section end-->
+
+        <!--fullwidth banner section start-->
+        <div class="simple-modern" *ngIf="homepageAds?.four?.banner && homepageAds?.four?.status == 1">
+            <img src="{{homepageAds.four.banner}}">
+             <div class="hero-caption">
+               <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="simple-moodern-text">
+                                <span class="text-white sub-text">Simple & Modern</span>
+                                <h1 class="text-white">{{homepageAds.four.heading}}</h1>
+                                <p>{{homepageAds.four.text}}</p>
+                                <a href="{{homepageAds.four.url}}" *ngIf="homepageAds.four.url" class="btn btn-primary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!--fullwidth banner section end-->
+       
+        <div class="position-relative marquee-contaner">
+            <!--Category box start-->
+             <div class="category-box pt-4 pb-0 pt-md-4 pb-md-4 ">
+                 <div class="container">
+                     <div class="cat-carousel owl-carousel owl-theme">
+                        
+                        <div class="item" *ngFor="let HomeCategory of HomeCategories">
+                         <a routerLink="/shop/{{HomeCategory.slug}}" class="cat-item">
+                             <span class="category-type">
+                                <img src="{{HomeCategory.banner}}" width="200" height="200" alt="{{HomeCategory.title}}" class="rounded-circle">
+                                <span class="text-center">{{HomeCategory.title}}</span>
+                            </span>
+                         </a>
+                        </div>
+
+                       
+                     </div>
+                 </div>
+             </div> 
+            <!--Category box end-->
+
+            <!--2 box ad section start-->
+                <div class="ad-half my-3 my-md-4" *ngIf="homepageAds?.five?.status == 1 && homepageAds?.six?.status == 1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-md-0" *ngIf="homepageAds.five.banner && homepageAds.five.status == 1">
+                                <a href="{{homepageAds.five.url}}"><img src="{{homepageAds.five.banner}}" alt="fifty-percent-design" class="w-100"></a>
+                            </div>
+
+                            <div class="col-md-6" *ngIf="homepageAds.six.banner && homepageAds.six.status == 1">
+                                <a href="{{homepageAds.six.url}}"><img src="{{homepageAds.six.banner}}" alt="fifty-percent-design" class="w-100"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--2 box ad section end-->
+
+
+            <!--brands section for mobile start-->
+                <div class="mobile-view" *ngIf="Brands.length > 0">
+                    <div class="container pt-2">
+                        <h2>Our Brands</h2>
+                        <div class="brand-category-icon owl-carousel owl-theme">
+
+                            <div class="item" *ngFor="let Brand of Brands">
+                                <div class="register-category-logo">
+                                    <img src="{{Brand.banner}}" alt="{{Brand.title}}">
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            <!--brands section for mobile end-->
+
+            <!--Our Product slider section start-->
+            <div class="our-products my-3 my-md-5" *ngIf="trandyProducts.length > 0">
+                <div class="container">
+                    <div class="slider-main-title mb-3">
+                        <h2>Trendy Products</h2>
+                    </div>
+                    <div class="product-slider owl-theme owl-carousel">
+
+                        <div class="product-box" *ngFor="let trandyProduct of trandyProducts">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <a routerLink="/product/{{trandyProduct.slug}}"><img src="{{trandyProduct.product_image}}" alt="{{trandyProduct.alt_tag}}" title="{{trandyProduct.title_tag}}"></a>
+                                    <div class="overlay-box">
+                                        <a (click)="addToCart(trandyProduct.id,1);" style="cursor:pointer" class="product-icon"><i class="fa-solid fa-cart-plus"></i></a>
+                                        <a href="" (click)="setQuickView(trandyProduct);" data-bs-toggle="modal" data-bs-target="#quickviewModel" class="product-icon mobile-quick-view"><i class="fa-regular fa-eye"></i></a>
+                                        <a  style="cursor:pointer" (click)="addToWishList('A',trandyProduct.id)" *ngIf="trandyProduct.is_wishlist == 0" class="product-icon"><i class="fa-regular fa-heart"></i></a>
+                                        <a style="cursor:pointer" (click)="addToWishList('R',trandyProduct.id)" *ngIf="trandyProduct.is_wishlist > 0" class="product-icon"><i style="color:#e75480" class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-detial">
+                                    <h3><a target="_blank" title="{{trandyProduct.product_name}}" routerLink="/product/{{trandyProduct.slug}}">{{trandyProduct.title}}</a></h3>
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <div class="star-rating">
+                                            <span class="star">{{trandyProduct.rating}} 
+                                                <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" hight="10px" width="20px"> 
+                                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                                                </svg>
+                                            </span>                                            
+                                        </div>
+                                        <div class="ms-2">
+                                            <p class="review">({{trandyProduct.no_of_reviews}})</p>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                        <div class="main-price">
+                                            <del>₹{{trandyProduct.price}}</del>
+                                        </div>
+                                        <div class="ms-2 offer-price">
+                                            <h4 class="fw-bold">₹{{trandyProduct.list_price}}</h4>
+                                        </div>
+                                        <div *ngIf="trandyProduct.discount_percentage > 0" class="offer ms-2">{{trandyProduct.discount_percentage}}% OFF</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- <div class="text-center mt-3 mt-md-3">
+                        <a href="#" class="view-more d-flex align-items-center justify-content-center">View All <img src="assets/new/img/view_all_arrow.svg" class="ms-2 w-32"></a>
+                    </div> -->
+                </div>
+            </div>
+            <!--Our Product slider section end -->
+
+            <!--Ad banner section start here-->
+            <div class="ad-banner-4" *ngIf="homepageAds?.seven?.status == 1 || homepageAds?.eight?.status == 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0" *ngIf="homepageAds.seven.banner && homepageAds.seven.status == 1">
+                            <div class="border">
+                                <a href="{{homepageAds.seven.url}}"><img src="{{homepageAds.seven.banner}}" alt="big-sale-image" class="w-100"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8" *ngIf="homepageAds.eight.banner && homepageAds.eight.status == 1">
+                            <div class="border"><a href="{{homepageAds.eight.url}}"><img src="{{homepageAds.eight.banner}}" alt="big-sale-image" class="w-100"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Ad banner section end here-->
+
+             <!--Our Product slider section start-->
+            <div class="our-products my-3 my-md-5" *ngIf="justArrived.length > 0">
+                <div class="container">
+                    <div class="slider-main-title mb-3">
+                        <h2>Just Arrived</h2>
+                    </div>
+                    <div class="product-slider owl-theme owl-carousel">
+
+                        <div class="product-box" *ngFor="let justArrive of justArrived">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <a routerLink="/product/{{justArrive.slug}}"><img alt="{{justArrive.alt_tag}}" title="{{justArrive.title_tag}}" src="{{justArrive.product_image}}"></a>
+                                    <div class="overlay-box">
+                                        <a (click)="addToCart(justArrive.id,1);" style="cursor:pointer" class="product-icon"><i class="fa-solid fa-cart-plus"></i></a>
+                                        <a href="" (click)="setQuickView(justArrive);" data-bs-toggle="modal" data-bs-target="#quickviewModel" class="product-icon mobile-quick-view"><i class="fa-regular fa-eye"></i></a>
+                                        <a  style="cursor:pointer" (click)="addToWishList('A',justArrive.id)" *ngIf="justArrive.is_wishlist == 0" class="product-icon"><i class="fa-regular fa-heart"></i></a>
+                                        <a style="cursor:pointer" (click)="addToWishList('R',justArrive.id)" *ngIf="justArrive.is_wishlist > 0" class="product-icon"><i style="color:#e75480" class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-detial">
+                                    <h3><a target="_blank" title="{{justArrive.product_name}}" routerLink="/product/{{justArrive.slug}}">{{justArrive.title}}</a></h3>
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <div class="star-rating">
+                                            <span class="star">{{justArrive.rating}} 
+                                                <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" hight="10px" width="20px"> 
+                                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
+                                                </svg>
+                                            </span>                                            
+                                        </div>
+                                        <div class="ms-2">
+                                            <p class="review">({{justArrive.no_of_reviews}})</p>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                        <div class="main-price">
+                                            <del>₹{{justArrive.price}}</del>
+                                        </div>
+                                        <div class="ms-2 offer-price">
+                                            <h4 class="fw-bold">₹{{justArrive.list_price}}</h4>
+                                        </div>
+                                        <div *ngIf="justArrive.discount_percentage > 0" class="offer ms-2">{{justArrive.discount_percentage}}% OFF</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- <div class="text-center mt-3 mt-md-3">
+                        <a href="#" class="view-more d-flex align-items-center justify-content-center">View All <img src="assets/new/img/view_all_arrow.svg" class="ms-2 w-32"></a>
+                    </div> -->
+                </div>
+            </div>
+            <!--Our Product slider section end -->
+            
+            <!--Ad banner section start here-->
+            <div class="ad-banner-4 mb-3 mb-md-5" *ngIf="homepageAds?.nine?.status == 1 || homepageAds?.ten?.status == 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <div class="border"><a href="{{homepageAds.nine.url}}"><img src="{{homepageAds.nine.banner}}" alt="big-sale-image" class="w-100"></a></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="border"><a href="{{homepageAds.ten.url}}"><img src="{{homepageAds.ten.banner}}" alt="big-sale-image" class="w-100"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Ad banner section end here-->
+
+            <!--Brands logo Left start -->
+            <div class="brand-logos d-none d-lg-block" *ngIf="Brands.length > 0">
+                <div class="Marquee">
+                  <div class="Marquee-content">
+                    <div style="cursor:pointer" (click)="gotoBrandPage(Brand.slug)" class="Marquee-tag" *ngFor="let Brand of Brands"><img src="{{Brand.banner}}" alt=""></div>
+
+                  
+                  </div>
+                </div>
+            </div>
+            <!--Brands Logo Left end-->
+
+            <!--Brands logo right start -->
+            <div class="brand-logos d-none d-lg-block" *ngIf="Brands.length > 0">
+                <div class="Marquee-right">
+                  <div class="Marquee-content-right">
+                    <div class="Marquee-tag" style="cursor:pointer" (click)="gotoBrandPage(Brand.slug)" *ngFor="let Brand of Brands"><img src="{{Brand.banner}}" alt=""></div>
+                  </div>
+                </div>
+            </div>
+            <!--Brands Logo right end-->
+
+        </div>
+
+        <!--Video section start here-->
+        <div class="video" *ngIf="homepageAds?.eleven?.status == 1">
+            <iframe width="100%" height="776" src="https://www.youtube.com/embed/Xs1roUUlOh4?rel=0" title="Anupam Store" frameborder="0"></iframe>
+            <!-- <a href="{{homepageAds.eleven.url}}"><img src="{{homepageAds.eleven.banner}}"></a> -->
+        </div>
+        <!--Video section end here-->
+    </div>
+
+
+    <!--Footer section start here-->
+        <app-footer></app-footer>
+    <!--Footer Section end here-->
+
+    <!--Product Quick view Modal start-->
+    <div class="modal fade" id="quickviewModel" tabindex="-1" aria-labelledby="quickviewModelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 p-3">
+                    <button type="button" class="btn-close" id="quick-view-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-3 py-0 pb-4">
+                    <div class="quick-product-view">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="carouselExample" class="carousel slide quick-view-img">
+                                    <div class="carousel-inner">
+                                        <div *ngFor="let p_image of quickViewProduct?.product_images; let i = index;" [ngClass]="{'active': i === 0}" class="carousel-item" >
+                                          <img src="{{p_image.image}}" class="d-block w-100" alt="...">
+                                        </div>
+                                    </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </button>
+                                    
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div> 
+
+                                <div class="d-flex pt-4 text-center justify-content-center">
+                                    <a style="cursor:pointer" (click)="addToWishList('A',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist == 0" class="view-more"><i class="fa-regular fa-heart me-2"></i> Add to Wishlist</a>
+                                    <a style="cursor:pointer" (click)="addToWishList('R',quickViewProduct?.id)" *ngIf="quickViewProduct?.is_wishlist > 0" class="view-more"><i class="fa-solid fa-heart me-2"></i> Remove from Wishlist</a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="product-details">
+                                    <h4>{{quickViewProduct?.product_name}}</h4>     
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <div class="star-rating">
+                                            <span class="star">{{quickViewProduct?.rating}} 
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>                                            
+                                        </div>
+                                        <div class="ms-2">
+                                            <p class="review">{{quickViewProduct?.no_of_reviews}} Ratings</p>
+                                        </div>
+                                    </div>  -->
+
+                                    <div class="d-flex product-price align-items-center justify-content-start mt-2">
+                                        <div class="main-price fs-4">
+                                            <del>₹{{quickViewProduct?.price}} </del>
+                                        </div>
+                                        <div class="ms-2 offer-price">
+                                            <h4 class="fw-bold fs-3">₹{{quickViewProduct?.list_price}}</h4>
+                                        </div>
+                                        <div *ngIf="quickViewProduct?.discount_percentage > 0" class="offer ms-2 fs-4">{{quickViewProduct?.discount_percentage}}% OFF</div>
+                                        
+                                    </div>   
+
+                                    <div *ngIf="quickViewProduct?.product_features.length > 0" class="product-quick-info">
+                                        <ul>
+                                            <li *ngFor="let p_feature of quickViewProduct?.product_features;">{{p_feature}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mt-4 p-2 p-md-3 rounded text-bg-light add-to-cart-section-m">
+                                        <div class="qty-input me-1 me-md-3 ">
+                                            <button (click)="qtyIncrement('Minus')" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                            <input class="product-qty" id="product-qty" type="number" name="product-qty" min="0" max="12" value="1">
+                                            <button (click)="qtyIncrement('Add')" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                        </div>
+                                       
+                                        <a id="addTocartBtnPopUp" style="cursor:pointer" (click)="addToCart(quickViewProduct?.id,0)" class="btn btn-primary me-1 me-md-3"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
+                                    </div>
+                                    <!-- <div class="d-flex align-items-center mt-3">
+                                        <span class="shareiton me-2">Share On:</span>
+                                        <div class="share-icons">
+                                            <a href="#" class="me-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-x-twitter"></i></a>
+                                            <a href="#" class="me-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                                        </div>
+                                    </div> -->                               
+                                            
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Product Quick view Modal end-->
+
+</div>

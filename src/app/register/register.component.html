@@ -1,0 +1,75 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="middle-section">
+        <!--inner page banner start here-->
+        <div class="inner-page-banner">
+            <img src="assets/new/img/simple-modern.jpg">
+            <div class="pageheading-overlay">
+                <h2 class="text-center text-white">Registration</h2>
+               
+            </div>
+        </div>
+        <!--inner page banner end here-->
+        <div class="container pt-5">
+            <!--Product list start here-->
+                <!--left filter bar start-->
+                <div class="row mt-15 inner-main-page desktops-class">
+                    <div class="col-lg-4">
+                        
+                        
+                    </div>
+                    <div class="col-md-4">
+                       
+                            <div id="success"></div>
+                            <form name="sentMessage" id="contactForm" class="shipping-adderss-main mb-3">
+                                <div class="row g-3 my-2">
+                                
+                                    <div class="col-md-12">
+                                        <div class="control-group">
+                                            <input type="text" class="form-control" id="name" placeholder="Full Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="control-group">
+                                            <input type="email" class="form-control" id="email" placeholder="Email Address" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="control-group">
+                                            <input type="text" maxlength="10" class="form-control" id="contact" placeholder="Phone Number" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="control-group">
+                                            <input type="password" class="form-control" id="password" placeholder="Password"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div>
+                                            <a class="btn btn-primary py-2 px-4" (click)="RegisterNow()" id="registerNow">Register Now</a>
+                                        </div>
+                                        <div style="margin-top:15px;">
+                                            <span>If you have already account. <a routerLink="/login">Login?</a></span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                
+                            </form>
+                        
+                    </div>
+                   
+                    <div class="col-lg-4 mb-5">
+                        
+                        
+                    </div>
+                </div>
+                <!--left filter bar end-->
+            <!--Product list end here-->
+        </div>
+    </div>
+    <!--Footer section start here-->
+    <app-footer></app-footer>
+    <!--Footer Section end here-->
+</div>
+
